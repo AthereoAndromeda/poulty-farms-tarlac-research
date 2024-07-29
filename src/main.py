@@ -23,24 +23,20 @@ def extract_all_tables(pdf_path):
 
     return all_tables
 
-"""
-  Single Layer Flatten
-"""
 def flatten(matrix):
+    """Single Layer Flatten"""
     return [item for row in matrix for item in row]
 
-"""
-  Required because region is split to another page
-
-  We don't need region so we remove it, and we also remove the header
-"""
 def fixup_tables(table):
+  """Fixes The table count and format
+  
+    Required because region is split to another page
+    We don't need region so we remove it, and we also remove the header
+  """
   return table[1:1594] # 1594 is when region starts
 
-"""
-  Filters for Tarlac-based Poultry Farms
-"""
 def filter_tarlac(table):
+  """Filters for Tarlac-based Poultry Farms"""
   new_list = []
   
   for row in table:
@@ -54,10 +50,8 @@ def filter_tarlac(table):
 
   return new_list
 
-"""
-  Filters for valid poultry farms as of `now`
-"""
 def filter_valid(table):
+  """Filters for valid poultry farms as of `now`"""
   new_list = []
 
   for row in table:
