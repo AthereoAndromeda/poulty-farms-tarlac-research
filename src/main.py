@@ -32,10 +32,10 @@ def flatten(matrix):
 """
   Required because region is split to another page
 
-  We don't need region so we remove it
+  We don't need region so we remove it, and we also remove the header
 """
 def fixup_tables(table):
-  return table[0:1594] # 1594 is when region starts
+  return table[1:1594] # 1594 is when region starts
 
 """
   Filters for Tarlac-based Poultry Farms
@@ -80,11 +80,9 @@ if __name__ == "__main__":
 
   print("List Fixup...")
   tables_fixed = fixup_tables(tables_whole)
-
   print("Total Farms: " + str(len(tables_fixed)))
 
   tables_tarlac = filter_tarlac(tables_fixed)
-
   print("Tarlac Farms: " + str(len(tables_tarlac)))
 
   tables_valid = filter_valid(tables_tarlac)
